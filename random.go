@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"net/http"
 	"time"
 )
 
@@ -21,7 +22,8 @@ func unsei(num int) string {
 	return message
 }
 
-func main() {
+func handler(w http.ResponseWriter, r *http.Request) {
+
 	var omikuji int = 0
 	var daikichi int = 0
 	rand.Seed(time.Now().UnixNano())
@@ -33,9 +35,14 @@ func main() {
 			daikichi = daikichi + 1
 		}
 		omikuji = omikuji + 1
-		fmt.Printf("%v 回目: %v\n", omikuji, result)
+		fmt.Fprint(w, omikuji, "回目: ", result, "\n")
 	}
 
-	fmt.Printf("おみくじの実施は%v回回しました\n", omikuji)
-	fmt.Printf("大吉の出現回数は%v回、出現確率は%v%%です\n", daikichi, float32(daikichi)/float32(omikuji)*100)
+	fmt.Fprint(w, "おみくじは", omikuji, "回回しました\n")
+	fmt.Fprint(w, "大吉の出現回数は", daikichi, "回です\n")
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":8080", nil)
 }
