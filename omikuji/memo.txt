@@ -1,7 +1,0 @@
-golang
-
-https://docs.google.com/presentation/d/1iwvr_wiPGky4vaf_RkJbeF7DPo3b0xnZYxi76HXwY2I/edit#slide=id.g2e31e31eb9_0_0
-
-https://play.golang.org/
-format 機能
-share 機能
