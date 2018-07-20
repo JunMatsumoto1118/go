@@ -33,5 +33,5 @@ func main() {
 		}
 		fmt.Printf("%v : %v\n", num, result)
 	}
-	fmt.Printf("大吉の出現回数は%v回です", daikichi)
+	fmt.Println("大吉の出現回数は%v回です", daikichi)
 }
